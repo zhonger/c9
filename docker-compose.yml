@@ -1,0 +1,13 @@
+version: "3"
+services:
+   c9:
+     image: sapk/cloud9
+     container_name: cloud9
+     ports:
+       - "18002:8181"
+     dns:
+       - 223.5.5.5
+     restart: always
+     volumes:
+       - ./workspace:/workspace
+     command: --auth c9:c9
