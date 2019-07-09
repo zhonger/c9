@@ -38,7 +38,7 @@ RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
     && chsh -s /bin/zsh
 
 RUN apt-get update \
-    && apt-get install -y dns-utils apt-transport-https inetutils-ping \
+    && apt-get install -y dnsutils apt-transport-https inetutils-ping \
     && rm -rf /var/lib/apt/lists/*
 
 VOLUME /workspace
