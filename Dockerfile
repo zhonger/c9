@@ -48,9 +48,14 @@ RUN wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - \
     && chmod +x composer.phar \
     && mv composer.phar /usr/local/bin/composer  
 
+RUN apt-get update && apt-get install sudo \
+    && usermod -a -G sudo node \
+    && echo "node ALL=(ALL) NOPASSWD : ALL" | tee /etc/sudoers.d/nopasswd4sudo \
+    && rm -rf /var/lib/apt/lists/* 
 
 VOLUME /workspace
 EXPOSE 8181 
+USER node
 ENTRYPOINT ["forever", "/cloud9/server.js", "-w", "/workspace", "--listen", "0.0.0.0"]
 
 CMD ["--auth","c9:c9"]
