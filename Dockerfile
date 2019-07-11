@@ -33,7 +33,7 @@ RUN buildDeps='make build-essential g++ gcc python2.7' && softDeps="tmux git" \
 
 RUN apt-get update \
     && apt-get install -y dnsutils inetutils-ping ca-certificates apt-transport-https \
-    && apt-get install git-core fish mycli apt-utils zip unzip
+    && apt-get install -y git-core fish mycli apt-utils zip unzip
 
 COPY sources.list /etc/apt/sources.list
 COPY mirror.sh /home/node/mirror.sh
@@ -41,7 +41,7 @@ COPY mirror.sh /home/node/mirror.sh
 RUN wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - \
     && echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list \
     && apt-get update && apt-get install php7.2 \
-    && apt-get install php7.2-cli php7.2-common php7.2-curl php7.2-mbstring php7.2-mysql php7.2-xml \
+    && apt-get -y install php7.2-cli php7.2-common php7.2-curl php7.2-mbstring php7.2-mysql php7.2-xml \
     && rm -rf /var/lib/apt/lists/* \
     && wget https://getcomposer.org/composer.phar \
     && wget https://install.phpcomposer.com/composer.phar \
