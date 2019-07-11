@@ -40,7 +40,7 @@ COPY mirror.sh /home/node/mirror.sh
 
 RUN wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - \
     && echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list \
-    && apt-get update && apt-get install php7.2 \
+    && apt-get update && apt-get -y install php7.2 \
     && apt-get -y install php7.2-cli php7.2-common php7.2-curl php7.2-mbstring php7.2-mysql php7.2-xml \
     && rm -rf /var/lib/apt/lists/* \
     && wget https://getcomposer.org/composer.phar \
